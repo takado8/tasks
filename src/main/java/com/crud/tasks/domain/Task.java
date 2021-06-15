@@ -15,7 +15,7 @@ public class Task {
     @Id
     @GeneratedValue
     @NotNull
-    @Column( name = "id", unique = true)
+    @Column(name = "id", unique = true)
     private Long id;
 
     @Column(name = "name")
@@ -24,4 +24,12 @@ public class Task {
     @Column(name = "description")
     private String content;
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
