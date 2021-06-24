@@ -1,9 +1,9 @@
 com/crud/tasks/service/DbService.java
  com.crud.tasks.service.DbService
-com/crud/tasks/domain/Task.java
- com.crud.tasks.domain.Task
 com/crud/tasks/controller/TaskController.java
  com.crud.tasks.controller.TaskController
+com/crud/tasks/domain/Task.java
+ com.crud.tasks.domain.Task
 com/crud/tasks/repository/TaskRepository.java
  com.crud.tasks.repository.TaskRepository
 com/crud/tasks/TasksApplication.java
