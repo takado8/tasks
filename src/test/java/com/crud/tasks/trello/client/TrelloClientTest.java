@@ -1,7 +1,10 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.config.TrelloConfig;
-import com.crud.tasks.domain.*;
+import com.crud.tasks.trello.config.TrelloConfig;
+import com.crud.tasks.trello.domain.Badges;
+import com.crud.tasks.trello.domain.CreatedTrelloCard;
+import com.crud.tasks.trello.domain.TrelloBoardDto;
+import com.crud.tasks.trello.domain.TrelloCardDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -34,7 +37,7 @@ class TrelloClientTest {
 
     @Test
     public void shouldFetchTrelloBoard() throws URISyntaxException {
-        //Given
+        // Given
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
@@ -60,13 +63,16 @@ class TrelloClientTest {
     @Test
     public void shouldCreateCard() throws URISyntaxException {
         //Given
+        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
+        when(trelloConfig.getTrelloAppKey()).thenReturn("test");
+        when(trelloConfig.getTrelloToken()).thenReturn("test");
         TrelloCardDto trelloCardDto = new TrelloCardDto(
                 "Test task",
                 "Test Description",
                 "top",
                 "test_id");
 
-        URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
+        URI uri = new URI("http://test.com/cards?key=test&token=test&name&desc&pos&idList");
 
         CreatedTrelloCard createdTrelloCardDto = new CreatedTrelloCard(
                 "1",
