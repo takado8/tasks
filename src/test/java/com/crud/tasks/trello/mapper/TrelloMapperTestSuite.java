@@ -74,28 +74,48 @@ public class TrelloMapperTestSuite {
     @Test
     public void testMapToBoardsDto(){
         // given
+        List<TrelloList> trelloLists = new ArrayList<>();
+        TrelloList trelloList = new TrelloList("1", "name1", false);
+        trelloLists.add(trelloList);
+
         List<TrelloBoard> trelloBoards = new ArrayList<>();
-        TrelloBoard trelloBoard = new TrelloBoard("1", "name1", new ArrayList<>());
+        TrelloBoard trelloBoard = new TrelloBoard("1", "name1", trelloLists);
         trelloBoards.add(trelloBoard);
+
         // when
         List<TrelloBoardDto> trelloBoardDtos = trelloMapper.mapToBoardsDto(trelloBoards);
         // then
         assertEquals("1", trelloBoardDtos.get(0).getId());
         assertEquals("name1", trelloBoardDtos.get(0).getName());
-        assertEquals(0, trelloBoardDtos.get(0).getLists().size());
+        assertEquals(1, trelloBoardDtos.get(0).getLists().size());
+
+        var newTrelloList = trelloBoardDtos.get(0).getLists();
+        assertEquals("1", newTrelloList.get(0).getId());
+        assertEquals("name1", newTrelloList.get(0).getName());
+        assertFalse(newTrelloList.get(0).isClosed());
+
     }
 
     @Test
     public void testMapToBoards() {
         // given
+        List<TrelloListDto> trelloListDtos = new ArrayList<>();
+        TrelloListDto trelloListDto1 = new TrelloListDto("1", "name1", false);
+        trelloListDtos.add(trelloListDto1);
+
         List<TrelloBoardDto> trelloBoardDtos = new ArrayList<>();
-        TrelloBoardDto trelloBoardDto = new TrelloBoardDto("1","name1", new ArrayList<>());
+        TrelloBoardDto trelloBoardDto = new TrelloBoardDto("1","name1", trelloListDtos);
         trelloBoardDtos.add(trelloBoardDto);
         // when
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloBoardDtos);
         // then
         assertEquals("1", trelloBoards.get(0).getId());
         assertEquals("name1", trelloBoards.get(0).getName());
-        assertEquals(0, trelloBoards.get(0).getLists().size());
+        assertEquals(1, trelloBoards.get(0).getLists().size());
+
+        var newTrelloList = trelloBoards.get(0).getLists();
+        assertEquals("1", newTrelloList.get(0).getId());
+        assertEquals("name1", newTrelloList.get(0).getName());
+        assertFalse(newTrelloList.get(0).isClosed());
     }
 }
