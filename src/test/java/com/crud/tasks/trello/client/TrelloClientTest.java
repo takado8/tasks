@@ -72,7 +72,7 @@ class TrelloClientTest {
                 "top",
                 "test_id");
 
-        URI uri = new URI("http://test.com/cards?key=test&token=test&name&desc&pos&idList");
+        URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
 
         CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
                 "1",
