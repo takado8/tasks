@@ -1,6 +1,5 @@
 package com.crud.tasks.trello.controller;
 
-import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.domain.CreatedTrelloCardDto;
 import com.crud.tasks.trello.domain.TrelloBoardDto;
 import com.crud.tasks.trello.domain.TrelloCardDto;
@@ -16,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrelloController {
 
-    private final TrelloService trelloService;
     private final TrelloFacade trelloFacade;
 
     @GetMapping("getTrelloBoards")
