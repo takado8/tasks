@@ -28,6 +28,6 @@ public class EmailScheduler {
                         "Currently in database you got: " + size + taskOrTasks
 
                 )
-        );
+        , true);
     }
 }
