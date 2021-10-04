@@ -39,7 +39,7 @@ class TaskControllerTest {
         // given
         when(taskController.getTasks()).thenReturn(List.of());
         // When & Then
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/task/getTasks")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
@@ -51,7 +51,7 @@ class TaskControllerTest {
         // given
         when(taskController.getTasks()).thenReturn(List.of(taskDto));
         // when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/task/getTasks")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id", Matchers.equalTo(id.intValue())))
@@ -64,9 +64,8 @@ class TaskControllerTest {
         //given
         when(taskController.getTask(anyLong())).thenReturn(taskDto);
         // when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/task/getTask")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("taskId", id.toString()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/tasks/" + id.toString())
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(id.intValue())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content", Matchers.equalTo(content)))
@@ -78,9 +77,8 @@ class TaskControllerTest {
         // given
         doNothing().when(taskController).deleteTask(anyLong());
         // when & then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/v1/task/deleteTask")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("taskId", id.toString()))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/v1/tasks/" + id.toString())
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
@@ -92,7 +90,7 @@ class TaskControllerTest {
         Gson gson = new Gson();
         String jsonStringContent = gson.toJson(taskDto);
         // when & then
-        mockMvc.perform(MockMvcRequestBuilders.put("/v1/task/updateTask")
+        mockMvc.perform(MockMvcRequestBuilders.put("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonStringContent))
@@ -110,7 +108,7 @@ class TaskControllerTest {
         Gson gson = new Gson();
         String jsonStringContent = gson.toJson(taskDto);
         // when & then
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/task/createTask")
+        mockMvc.perform(MockMvcRequestBuilders.post("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonStringContent))
