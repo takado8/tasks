@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="jdbc:mysql://localhost:3306/task_crud?serverTimezone=Europe/Warsaw&amp;useSSL=False&amp;allowPublicKeyRetrieval=true">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.20">
-    <root id="1">
-      <ServerVersion>8.0.24</ServerVersion>
-      <DefaultEngine>InnoDB</DefaultEngine>
-      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <DefaultCasing>lower/lower</DefaultCasing>
-    </root>
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.23">
+    <root id="1"/>
     <schema id="2" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
     </schema>
@@ -873,8 +868,6 @@
     </collation>
     <user id="276" parent="1" name="kodilla">
       <Host>localhost</Host>
-      <ObjectGrants>ALL PRIVILEGES|task_crud
-</ObjectGrants>
     </user>
     <table id="277" parent="3" name="hibernate_sequence"/>
     <table id="278" parent="3" name="tasks"/>

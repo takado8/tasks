@@ -4,12 +4,8 @@ import lombok.Data;
 
 @Data
 public class TrelloCardDto {
-
-    private String name;
-    private String description;
-    private String pos;
-    private String listId;
-
-    public TrelloCardDto(String test_task, String test_description, String top, String test_id) {
-    }
+    private final String name;
+    private final String description;
+    private final String pos;
+    private final String listId;
 }

@@ -2,10 +2,12 @@ package com.crud.tasks.trello.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
 public class AttachmentsByType {
     public AttachmentsByType(Trello trello) {
         this.trello = trello;
